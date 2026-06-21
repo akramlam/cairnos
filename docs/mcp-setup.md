@@ -23,12 +23,12 @@ JSON-RPC over stdio, so it will appear to "hang" - that's expected; it's waiting
 Register it once at **user scope** so it loads in every Claude Code session, from any folder:
 
 ```bash
-claude mcp add cairn --scope user -- pnpm -C D:/Akram_OS --filter @cairn/mcp-server start
+claude mcp add cairn --scope user -- pnpm -C /path/to/cairnos --filter @cairn/mcp-server start
 claude mcp list            # → cairn ✔ Connected
 ```
 
 (If `pnpm` isn't on PATH in the spawning environment, use the Node form instead:
-`-- node --import tsx D:\Akram_OS\apps\mcp-server\src\index.ts`.)
+`-- node --import tsx C:\path\to\cairnos\apps\mcp-server\src\index.ts`.)
 
 ### Or project scope (to share the repo)
 
@@ -59,7 +59,7 @@ path so it works outside the repo. On Windows:
   "mcpServers": {
     "cairn": {
       "command": "pnpm",
-      "args": ["-C", "D:\\Akram_OS", "--filter", "@cairn/mcp-server", "start"]
+      "args": ["-C", "C:\\path\\to\\cairnos", "--filter", "@cairn/mcp-server", "start"]
     }
   }
 }
@@ -72,7 +72,7 @@ If `pnpm` is not on the GUI app's PATH, use Node + tsx directly:
   "mcpServers": {
     "cairn": {
       "command": "node",
-      "args": ["--import", "tsx", "D:\\Akram_OS\\apps\\mcp-server\\src\\index.ts"]
+      "args": ["--import", "tsx", "C:\\path\\to\\cairnos\\apps\\mcp-server\\src\\index.ts"]
     }
   }
 }
@@ -111,8 +111,8 @@ Both the engine and the MCP server resolve the DB with the same logic
   "mcpServers": {
     "cairn": {
       "command": "pnpm",
-      "args": ["-C", "D:\\Akram_OS", "--filter", "@cairn/mcp-server", "start"],
-      "env": { "CAIRN_DB_PATH": "D:\\Akram_OS\\.akram\\cairn.db" }
+      "args": ["-C", "C:\\path\\to\\cairnos", "--filter", "@cairn/mcp-server", "start"],
+      "env": { "CAIRN_DB_PATH": "C:\\path\\to\\cairnos\\data\\cairn.db" }
     }
   }
 }
