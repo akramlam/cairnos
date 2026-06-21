@@ -1,14 +1,33 @@
-# CairnOS
+<div align="center">
 
-> **Turn chaos into action.**
-> A local-first AI productivity desktop app that turns messy brain dumps into organized
-> projects, tasks, notes, ideas, and reminders.
+# 🪨 CairnOS
+
+**Turn chaos into action.**
+
+A local-first AI command center where your messy thoughts become organized tasks, notes, ideas, and reminders, and **Claude Code can read and edit the same local brain** over MCP.
+
+[![Download for Windows](https://img.shields.io/badge/download-Windows-3b82f6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/akramlam/cairnos/releases/latest)
+&nbsp;
+[![Website](https://img.shields.io/badge/website-cairnos-6366f1?style=for-the-badge)](http://akram-laamache.me/cairnos/)
+&nbsp;
+![License: MIT](https://img.shields.io/badge/license-MIT-8b5cf6?style=for-the-badge)
 
 ![CairnOS dashboard](docs/screenshots/dashboard.png)
 
-CairnOS is **private by default** - your data lives in a single SQLite file on your machine.
-A built-in rule-based engine classifies natural-language brain dumps into structured items, and
-a local **MCP server** lets Claude Code read and modify the very same data the app uses.
+</div>
+
+CairnOS is **private by default**: your data lives in a single SQLite file on your machine. A built-in engine classifies natural-language brain dumps into structured items, and a local **MCP server** lets Claude Code work on the very same data the app uses.
+
+### What makes it different
+
+- **🧠 One local brain, shared with Claude Code.** The desktop app and a local MCP server read and write the *same* SQLite database. Ask Claude "what's overdue?" or "make a task to email the team tomorrow," and it shows up live in the app.
+- **🔒 Local-first and private.** No accounts, no cloud, no telemetry. It works fully offline and your data never leaves your machine. Export to JSON anytime.
+- **✨ Brain dump in, structure out.** Type one messy stream of thought; CairnOS splits it into tasks, ideas, notes, and reminders with priorities and due dates, for you to review before saving.
+- **🤖 AI is optional.** A deterministic rule engine works out of the box. Point it at a local Ollama model when you want, with automatic fallback.
+
+## Download
+
+Grab the latest Windows installer from [**Releases**](https://github.com/akramlam/cairnos/releases/latest). Use the `.exe` (per-user, self-updating). It isn't code-signed yet, so Windows may warn "Unknown Publisher": click **More info → Run anyway**.
 
 ---
 
@@ -51,8 +70,7 @@ cairn/
 │  ├─ shared/       # enums, domain types, Zod validators
 │  ├─ db/           # Drizzle schema, migrations, client, seed
 │  └─ core/         # services + the rule-based classifier
-├─ docs/            # product-spec, architecture, database, design-system, mcp-setup
-└─ .mcp.json        # ready-to-use Claude Code MCP config
+└─ docs/            # product spec, architecture, database, design system, MCP setup
 ```
 
 ## Quickstart
@@ -109,7 +127,7 @@ Register the server once at **user scope** so it's available in every Claude Cod
 any folder:
 
 ```bash
-claude mcp add cairn --scope user -- pnpm -C D:/Akram_OS --filter @cairn/mcp-server start
+claude mcp add cairn --scope user -- pnpm -C /path/to/cairnos --filter @cairn/mcp-server start
 claude mcp list            # → cairn ✔ Connected
 ```
 
@@ -138,8 +156,8 @@ pnpm desktop:build
 
 This produces a **fully self-contained installer** - no Node, no repo required to run it:
 
-- `…/target/release/bundle/nsis/CairnOS_0.1.0_x64-setup.exe` (~27 MB)
-- `…/target/release/bundle/msi/CairnOS_0.1.0_x64_en-US.msi` (~40 MB)
+- `…/target/release/bundle/nsis/CairnOS_0.1.1_x64-setup.exe` (~27 MB)
+- `…/target/release/bundle/msi/CairnOS_0.1.1_x64_en-US.msi` (~40 MB)
 
 The build bundles the engine as a sidecar: a matching `node.exe`, the esbuild-bundled engine,
 the `better-sqlite3` native addon, and the migrations are shipped as Tauri resources
