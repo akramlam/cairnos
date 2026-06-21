@@ -12,7 +12,7 @@ A local-first AI command center where your messy thoughts become organized tasks
 &nbsp;
 ![License: MIT](https://img.shields.io/badge/license-MIT-8b5cf6?style=for-the-badge)
 
-![CairnOS dashboard](docs/screenshots/dashboard.png)
+![CairnOS](docs/og.png)
 
 </div>
 
