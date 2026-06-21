@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Tauri / Rust
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+apps/desktop/src-tauri/sidecar/
+
+# Caches
+scripts/.cache/
+.turbo/
+
+# Scratch / orchestration (local only)
+.superpowers/
+
+# Local-only assets (not published to the repo)
+design-references/
+docs/superpowers/
+
+# Signing keys: NEVER commit
+*.key
+*.pem
+.tauri/
+
+# Local database & app data
+*.db
+*.db-shm
+*.db-wal
+.akram/
+data/
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.stackdump
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

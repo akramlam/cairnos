@@ -1,0 +1,38 @@
+{
+  "name": "cairn",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "CairnOS - a local-first AI productivity desktop app. Turn chaos into action.",
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -n engine,web -c blue,magenta \"pnpm run server:dev\" \"pnpm run web:dev\"",
+    "web:dev": "pnpm --filter @cairn/desktop dev",
+    "server:dev": "pnpm --filter @cairn/server dev",
+    "desktop:dev": "pnpm --filter @cairn/desktop tauri:dev",
+    "desktop:build": "pnpm --filter @cairn/desktop tauri:build",
+    "mcp:dev": "pnpm --filter @cairn/mcp-server dev",
+    "mcp:build": "pnpm --filter @cairn/mcp-server build",
+    "db:generate": "pnpm --filter @cairn/db generate",
+    "db:migrate": "pnpm --filter @cairn/db migrate",
+    "db:seed": "pnpm --filter @cairn/db seed",
+    "build": "pnpm --filter @cairn/desktop build",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "pnpm -r --if-present lint",
+    "clean": "pnpm -r --if-present clean"
+  },
+  "devDependencies": {
+    "@yao-pkg/pkg": "^6.3.0",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.24.2",
+    "playwright-core": "^1.49.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["better-sqlite3", "esbuild"]
+  }
+}
